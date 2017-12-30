@@ -1,0 +1,27 @@
+{
+	"name": "nodetopia-kue",
+	"version": "0.0.1",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/NodeTopia/Kue.git"
+	},
+	"author": "Tim <mangoraft@gmail.com>",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/NodeTopia/Kue/issues"
+	},
+	"homepage": "https://github.com/NodeTopia/Kue#readme",
+	"dependencies": {
+		"async": "^2.6.0",
+		"eventemitter2": "^5.0.0",
+		"kue": "git+https://github.com/MangoRaft/kue.git",
+		"nconf": "^0.10.0",
+		"node-uuid": "^1.4.8",
+		"redis": "^2.8.0"
+	}
+}

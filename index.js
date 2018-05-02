@@ -18,10 +18,17 @@ const methods = [
     'dns.add',
     'dns.remove',
     'dns.clean',
-    'dns.query'
+    'dns.query',
     /*
-     *
+     *Router methods
      */
+    'router.add.url',
+    'router.add.host',
+    'router.add.tls',
+    'router.info',
+    'router.remove.url',
+    'router.remove.host',
+    'router.remove.tls',
 ]
 
 methods.forEach(function (method) {

@@ -1,15 +1,36 @@
-
 /*
  *Setup Kue jobs/eevents
  */
+var jobs = require('./jobs');
+var events = require('./events');
+
 
 module.exports = {
-	events : require('./events'),
-	jobs : require('./jobs'),
-	fleet : require('./fleet'),
-	router : require('./router'),
-	dns : require('./dns'),
-	le : require('./le'),
-	scw : require('./scaleway'),
-	addon : require('./addons')
+    events: events,
+    jobs: jobs
 };
+
+const methods = [
+    /*
+     *DNS methods
+     */
+    'dns.init',
+    'dns.add',
+    'dns.remove',
+    'dns.clean',
+    'dns.query'
+    /*
+     *
+     */
+]
+
+methods.forEach(function (method) {
+    module.exports[method] = function (data) {
+        return new Promise(function (resolve, reject) {
+            var job = jobs.create(method, data);
+            job.on('complete', resolve);
+            job.on('failed', reject);
+            job.save(reject);
+        })
+    }
+})

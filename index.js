@@ -44,6 +44,10 @@ const methods = [
     'fleet.deploy',
     'fleet.scale',
     'fleet.node.get',
+    /*
+     *letsencrypt methods
+     */
+    'le.dns',
 ]
 
 methods.forEach(function (method) {

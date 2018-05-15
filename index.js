@@ -48,17 +48,39 @@ const methods = [
      *letsencrypt methods
      */
     'le.dns',
+    /*
+     *addon methods
+     */
+    'addons.mongodb.bind',
+    'addons.mongodb.unbind',
+
+    'addons.shard.bind',
+    'addons.shard.unbind',
+
+    'addons.replica.bind',
+    'addons.replica.unbind',
+
+    'addons.redis.bind',
+    'addons.redis.unbind',
+
+
+
 ]
 
 methods.forEach(function (method) {
 
     let methods = method.split('.')
 
-    function fn(data) {
+    function fn(data, ttl = false) {
         return new Promise(function (resolve, reject) {
             var job = jobs.create(method, data);
             job.on('complete', resolve);
             job.on('failed', reject);
+
+            if (ttl !== false) {
+                job.ttl(ttl)
+            }
+
             job.save(function (err) {
                 if (err) {
                     reject(err)
